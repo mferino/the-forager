@@ -9,17 +9,6 @@ export function getMaxStreak(str: string) {
   const evensFound = str.match(evens);
   const oddsFound = str.match(odds);
 
-  /* 
-    if no matches found on either
-    then we can return early
-  */
-  if (!evensFound && !oddsFound) {
-    return {
-      maxStreak: 0,
-      matchStr: null,
-    };
-  }
-
   /*
     Here we're going to iterate through
     each set of matches and grab the
@@ -55,11 +44,14 @@ export function getMaxStreak(str: string) {
     }
   });
 
-  // If there is a tie return the first
-  if (even.maxStreak === odd.maxStreak) {
-    const indexOfEven = str.indexOf(even.matchStr);
-    const indexOfOdd = str.indexOf(odd.matchStr);
-    return indexOfEven > indexOfOdd ? even : odd;
+  // If there is a tie return the first occurrence
+  if (even.maxStreak < 2 && odd.maxStreak < 2) {
+    return {
+      maxStreak: 0,
+      matchStr: "",
+    };
+  } else if (even.maxStreak === odd.maxStreak) {
+    return str.indexOf(even.matchStr) < str.indexOf(odd.matchStr) ? even : odd;
   } else {
     return even.maxStreak > odd.maxStreak ? even : odd;
   }

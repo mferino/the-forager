@@ -8,9 +8,9 @@ import { NextResponse } from "next/server";
 const postSchema = z.string();
 
 export async function POST(request: Request) {
-  const data: InputData = await request.json();
+  // const data: InputData = await request.json();
 
-  const validatedData = postSchema.parse(data);
+  // const validatedData = postSchema.parse(data);
 
   /*
     streak 5
