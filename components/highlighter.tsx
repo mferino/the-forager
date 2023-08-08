@@ -7,19 +7,21 @@ interface HighlighterProps {
 }
 
 export default function Highlighter({ text, search }: HighlighterProps) {
-  const parts = text.split(new RegExp(`(${search})`, "gi"));
+  const index = text.toLowerCase().indexOf(search.toLowerCase());
+
+  if (index === -1) {
+    return <span>{text}</span>;
+  }
+
+  const before = text.slice(0, index);
+  const matched = text.slice(index, index + search.length);
+  const after = text.slice(index + search.length);
 
   return (
-    <span>
-      {parts.map((part, i) =>
-        part.toLowerCase() === search.toLowerCase() ? (
-          <div key={i} className={styles.highlightedText}>
-            {part}
-          </div>
-        ) : (
-          part
-        )
-      )}
-    </span>
+    <div>
+      {before}
+      <span className={styles.highlightedText}>{matched}</span>
+      {after}
+    </div>
   );
 }

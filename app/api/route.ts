@@ -8,18 +8,11 @@ import { NextResponse } from "next/server";
 const postSchema = z.string();
 
 export async function POST(request: Request) {
-  // const data: InputData = await request.json();
+  const data: InputData = await request.json();
 
-  // const validatedData = postSchema.parse(data);
+  const validatedData = postSchema.parse(data);
 
-  /*
-    streak 5
-    'is is w' should be highlighte as the streak
-  */
-  const testStr = "This is what your final p";
-
-  const res = getMaxStreak(testStr);
-  console.log(res, " :: res");
+  const res = getMaxStreak(validatedData);
 
   return NextResponse.json(res);
 }

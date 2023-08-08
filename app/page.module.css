@@ -11,6 +11,9 @@
   transform: translateY(-100%);
 }
 
-.text {
-  font-size: 2.5rem;
+.textWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
