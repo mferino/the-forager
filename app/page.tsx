@@ -3,8 +3,11 @@
 import React from "react";
 import styles from "./page.module.css";
 
+import Highlighter from "@/components/highlighter";
+
 export default function Home() {
   const inputRef = React.useRef<HTMLInputElement>(null);
+  const [text, setText] = React.useState("");
 
   React.useEffect(() => {
     const currentInputRef = inputRef.current;
@@ -36,12 +39,15 @@ export default function Home() {
     // });
     // const maxStreak = await res.json();
     // console.log(maxStreak, " :: inputValues");
-    console.log(inputRef?.current?.value, " :: inputRef.current");
+    // console.log(inputRef?.current?.value, " :: inputRef.current");
+    setText(str)
   }
 
   return (
     <div className={styles.maxWidthWrapper}>
       <input onChange={handleChange} ref={inputRef} />
+      <div className={styles.text}>{text}</div>
+      <Highlighter text={"Is this working"} search={"working"} />
     </div>
   );
 }

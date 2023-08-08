@@ -1,30 +1,25 @@
-import type { FormInput } from "./route.types";
+import type { InputData } from "./route.types";
 
-import { NextResponse } from "next/server";
-import { formatStr, stringLooper } from "./route.helpers";
-
-// zod for runtime validation
+import { getMaxStreak } from "./route.helpers";
 import { z } from "zod";
+import { NextResponse } from "next/server";
 
 // schemas
 const postSchema = z.string();
 
-// testing that routes work
-export async function GET() {
-  return NextResponse.json({ message: "Testing /api route" });
-}
-
 export async function POST(request: Request) {
-  const data: FormInput = await request.json();
+  const data: InputData = await request.json();
 
-  // run input data through zod validation
-  const parsedData = formatStr(postSchema.parse(data));
+  const validatedData = postSchema.parse(data);
 
+  /*
+    streak 5
+    'is is w' should be highlighte as the streak
+  */
+  const testStr = "This is what your final p";
 
-  // loop through string
-  const returnData = stringLooper(parsedData);
+  const res = getMaxStreak(testStr);
+  console.log(res, " :: res");
 
-  console.log(returnData, " :: evenOrOddState");
-
-  return NextResponse.json(returnData);
+  return NextResponse.json(res);
 }

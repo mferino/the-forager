@@ -1,13 +1,8 @@
-export type FormInput = {
-  input: string;
-};
-
-export type EvenOrOddState = {
-  previousEvenOrOdd: boolean | undefined;
-  currentEvenOrOdd: boolean | undefined;
-  currentStreak: number;
+export interface MaxStreakData {
   maxStreak: number;
-  maxStreakStartIndex: number;
-  maxStreakEndIndex: number;
-  anchor: number;
-};
+  matchStr: string;
+}
+
+export type InputData = { 
+  data: string;
+}
