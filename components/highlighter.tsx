@@ -9,10 +9,6 @@ interface HighlighterProps {
 export default function Highlighter({ text, search }: HighlighterProps) {
   const index = text.toLowerCase().indexOf(search.toLowerCase());
 
-  if (index === -1) {
-    return <span>{text}</span>;
-  }
-
   const before = text.slice(0, index);
   const matched = text.slice(index, index + search.length);
   const after = text.slice(index + search.length);
