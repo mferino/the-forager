@@ -52,7 +52,10 @@ export default function Home() {
     <div className={styles.maxWidthWrapper}>
       <input onChange={handleChange} ref={inputRef} />
       <div className={styles.textWrapper}>
-        <div className={styles.highlighterWrapper}>
+        <div
+          style={{ marginBottom: text === "" ? "0rem" : "1.5rem" }}
+          className={styles.highlighterWrapper}
+        >
           <Highlighter text={text} search={data?.matchStr} />
         </div>
         <div>Longest even or odd streak: {data?.maxStreak}</div>

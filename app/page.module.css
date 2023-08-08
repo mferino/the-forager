@@ -2,6 +2,7 @@
   height: 100%;
   display: grid;
   place-content: center;
+  min-width: 550px;
 }
 
 .maxWidthWrapper > input {
@@ -21,8 +22,8 @@
   padding: 32px;
   font-size: 2.5rem;
   max-width: 80vw;
+  min-width: 500px;
 }
 
-/* .highlighterWrapper {
-  margin-bottom: 2rem;  
+/* .maxStreak {
 } */
